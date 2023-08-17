@@ -82,15 +82,19 @@ export default function Navbar() {
                 Gallery
               </Link>
             </li>
-            <li className="ml-auto"> {/* Right-aligned "Donate" button */}
-              <Link
-                href="#Donate"
-                className="block py-2 pl-3 pr-4 text-white hover:bg-gray-100 md:border-0 md:hover:text-white-700 md:p-0 md:hover:text-white-500 md:hover:bg-green-400 bg-green-500 rounded-full"
-                id="navbar__contact"
-              >
-                Log in
-              </Link>
-            </li>
+          </ul>
+        </div>
+        <div className="w-full md:block md:w-auto items-center">
+          <ul className="font-light flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-sm bg-gray-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white justify-center pr-9 pl-9">
+              <li>
+                <Link
+                  href="#Donate"
+                  className="block py-2 pl-3 pr-4 text-white hover:bg-gray-100 md:border-0 md:hover:text-white-700 md:p-0 md:hover:text-white-500 md:hover:bg-green-400 bg-green-500 rounded-full"
+                  id="navbar__contact"
+                >
+                  Log in
+                </Link>
+              </li>
           </ul>
         </div>
       </div>
