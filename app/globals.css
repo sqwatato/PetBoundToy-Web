@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; 
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 0, 0, 0; 
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -11,17 +12,87 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
+}
+
+/* Setting Fonts*/
+#font__poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styling */
+#navbar__custom {
+  /*Box Shadow*/
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  margin-bottom: 3px;
+}
+
+/* Navbar: Contact */
+#navbar__contact {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 450;
+}
+
+/* Navbar Elements */
+.navbar__elements {
+  position: relative;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5;
+  padding: 0 10px;
+  margin-top: 3px;
+}
+
+.navbar__elements:after {
+  content: '';
+  position: absolute;
+  background-color: #84eeab;
+  height: 5px;
+  width: 0;
+  left: 0;
+  bottom: -26px;
+}
+
+.navbar__elements:hover:after {
+  animation: growInAnimation 0.3s ease-in-out forwards;
+}
+
+@keyframes growInAnimation {
+  0% {
+      width: 0;
+  }
+  100% {
+      width: 100%;
+   }
+}
+
+/* Hero: Right Arrow */
+.right-arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
