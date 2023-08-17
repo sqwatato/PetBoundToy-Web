@@ -1,5 +1,4 @@
-import dog from '@/images/hero_dog.jpg';
-
+import Image from 'next/image';
 const Hero = () => {
   return ( 
     <section className="bg-white">
@@ -20,7 +19,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="hidden lg:mt-0 lg:col-span-5 lg:flex text-black">
-              <img src="@/images/hero_dog.jpg" alt="hero image" />
+              <img src="/images/hero_dog.jpg" alt="hero image" />
             </div>
         </div>
     </section>
