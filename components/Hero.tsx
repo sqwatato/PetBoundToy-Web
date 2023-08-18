@@ -13,9 +13,9 @@ const Hero = () => {
                   and help you find your furry companion.
                 </p>
                 <div className="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                  <a className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-green-500 border border-green-600 rounded-lg sm:w-auto hover:bg-green-600 focus:ring-4 focus:ring-green-300">
+                  <button className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-green-500 border border-green-600 rounded-lg sm:w-auto focus:ring-4 focus:ring-green-300">
                       Get Started &nbsp;<i className="right-arrow"></i>
-                  </a>
+                  </button>
               </div>
             </div>
             <div className="hidden lg:mt-0 lg:col-span-5 lg:flex text-black">

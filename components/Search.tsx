@@ -1,4 +1,67 @@
-const Search = () => {
+'use client'
+import { useState } from "react";
+
+const Search = (props) => {
+  const animalsList = props.animalsToAdopt;
+  const dogBreeds = props.dogBreeds;
+  const catBreeds = props.catBreeds;
+  const rabbitBreeds = props.rabbitBreeds;
+  const guineaPigBreeds = props.guineaPigBreeds;
+  const hamsterBreeds = props.hamsterBreeds;
+  const gerbilBreeds = props.gerbilBreeds;
+  const ferretBreeds = props.ferretBreeds;
+  const parrotBreeds = props.parrotBreeds;
+  const canaryBreeds = props.canaryBreeds;
+  const finchBreeds = props.finchBreeds;
+  const budgieBreeds = props.budgieBreeds;
+  const reptileBreeds = props.reptileBreeds;
+  const amphibianBreeds = props.amphibianBreeds;
+  const smallBirdBreeds = props.smallBirdBreeds;
+  const smallRodentBreeds = props.smallRodentBreeds;
+  const hermitCrabBreeds = props.hermitCrabBreeds;
+  const ageTypes = props.ageTypes;
+
+  let [selectedAnimal, setSelectedAnimal] = useState("None");
+
+  function getBreeds(animal) {
+    switch (animal) {
+      case "Dogs":
+        return dogBreeds;
+      case "Cats":
+        return catBreeds;
+      case "Rabbits":
+        return rabbitBreeds;
+      case "Guinea Pigs":
+        return guineaPigBreeds;
+      case "Hamsters":
+        return hamsterBreeds;
+      case "Gerbils":
+        return gerbilBreeds;
+      case "Ferrets":
+        return ferretBreeds;
+      case "Parrots":
+        return parrotBreeds;
+      case "Canaries":
+        return canaryBreeds;
+      case "Finches":
+        return finchBreeds;
+      case "Budgies":
+        return budgieBreeds;
+      case "Reptiles (e.g., Snakes, Lizards)":
+        return reptileBreeds;
+      case "Amphibians (e.g., Frogs, Newts)":
+        return amphibianBreeds;
+      case "Small Birds (e.g., Cockatiels, Lovebirds)":
+        return smallBirdBreeds;
+      case "Small Rodents (e.g., Mice, Rats)":
+        return smallRodentBreeds;
+      case "Hermit Crabs":
+        return hermitCrabBreeds;
+      default:
+        return [];
+    }
+  }
+  
   return ( 
     <section className="bg-white font__poppins">
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -24,60 +87,28 @@ const Search = () => {
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="species" className="sr-only">Species</label>
-              <select id="species" name="species" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                <option>Cat</option>
-                <option>Dog</option>
-                <option>Other</option>
+              <select onChange={(event) => setSelectedAnimal(event.target.value)} id="species" name="species" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                {
+                  animalsList.map((animal) => {
+                    return <option>{animal}</option>
+                  })
+                }
               </select>
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="breed" className="sr-only">Breed</label>
               <select id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                <option>Any</option>
-                <option>American Bulldog</option>
-                <option>Australian Shepherd</option>
-                <option>Basset Hound</option>
-                <option>Beagle</option>
-                <option>Bernese Mountain Dog</option>
-                <option>Boxer</option>
-                <option>Brittany</option>
-                <option>Bulldog</option>
-                <option>Boston Terrier</option>
-                <option>Cavalier King Charles Spaniel</option>
-                <option>Chihuahua</option>
-                <option>Cocker Spaniel</option>
-                <option>Collie</option>
-                <option>Dachshund</option>
-                <option>Doberman Pinscher</option>
-                <option>English Springer Spaniel</option>
-                <option>French Bulldog</option>
-                <option>German Shepherd</option>
-                <option>German Shorthaired Pointer</option>
-                <option>Golden Retriever</option>
-                <option>Great Dane</option>
-                <option>Havanese</option>
-                <option>Labrador Retriever</option>
-                <option>Maltese</option>
-                <option>Mastiff</option>
-                <option>Miniature American Shepherd</option>
-                <option>Miniature Schnauzer</option>
-                <option>Pembroke Welsh Corgi</option>
-                <option>Pomeranian</option>
-                <option>Poodle</option>
-                <option>Pug</option>
-                <option>Rottweiler</option>
-                <option>Siberian Husky</option>
-                <option>Shetland Sheepdog</option>
-                <option>Shih Tzu</option>
-                <option>Vizsla</option>
-                <option>West Highland White Terrier</option>
-                <option>Yorkshire Terrier</option>
+              {
+                getBreeds(selectedAnimal).map((breed, index) => {
+                  return <option key={index}>{breed}</option>;
+                })
+              }
               </select>
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="age" className="sr-only">Age</label>
               <select id="age" name="age" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                <option>Any</option>
+                <option>Age (Any)</option>
                 <option>Baby</option>
                 <option>Young</option>
                 <option>Adult</option>
