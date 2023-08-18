@@ -3,10 +3,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Tailwind Colors */
+/* Button Custom Classes*/
 @layer components {
- .button {
+ .button--primary {
     @apply bg-green-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .button--secondary {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .button--tertiary {
+    @apply bg-red-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .button--quaternary {
+    @apply bg-yellow-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .button--primary:hover {
+    @apply bg-green-600;
+  }
+
+  .button--secondary:hover {
+    @apply bg-blue-600;
+  }
+
+  .button--tertiary:hover {
+    @apply bg-red-600;
+  }
+
+  .button--quaternary:hover {
+    @apply bg-yellow-600;
   }
 }
 

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 const Hero = () => {
   return ( 
     <section className="bg-white">
