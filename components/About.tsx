@@ -5,11 +5,7 @@ const About = () => {
         <div className="text-center">
           <h2 className="text-base font-semibold tracking-wider text-green-500 uppercase">About Us</h2>
           <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl font__poppins">
-            We're a non-profit dedicated to creating a world where every pet has a home.
-          </p>
-          <p className="max-w-2xl mt-4 text-xl text-gray-500 lg:mx-auto font__poppins">
-            Through our platform, we facilitate the adoption of pets from shelters and rescues,
-            and help you find your soulpet.
+            Saving Animal Lives Through Adoption
           </p>
         </div>
         <div className="mt-20">
@@ -17,17 +13,17 @@ const About = () => {
             <div>
               <dt className="text-2xl font-medium text-gray-900 font__poppins">Our Mission</dt>
               <dd className="mt-2 text-base text-gray-500">
-                We're a non-profit dedicated to creating a world where every pet has a home.
-                Through our platform, we facilitate the adoption of pets from shelters and rescues,
-                and help you find your soulpet.
+                To lighten the load of shelters and rescues by providing a platform for them to
+                connect with potential adopters and donors. We hope to make the adoption process
+                easier for both the adopter and the shelter/rescue.
               </dd>
             </div>
             <div>
               <dt className="text-2xl font-medium text-gray-900 font__poppins">Our Vision</dt>
               <dd className="mt-2 text-base text-gray-500">
-                We're a non-profit dedicated to creating a world where every pet has a home.
-                Through our platform, we facilitate the adoption of pets from shelters and rescues,
-                and help you find your soulpet.
+                We hope to create a world in which pets are able to find happy homes, and
+                where shelters and rescues are able to find the resources they need to continue
+                rescuing and helping animals.
               </dd>
             </div>
           </dl>
