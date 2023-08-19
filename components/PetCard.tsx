@@ -1,29 +1,60 @@
-import Image from 'next/image';
-const Hero = () => {
-  return ( 
-    <section className="bg-white">
-        <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
-            <div className="mr-auto place-self-center lg:col-span-7">
-                <h1 className="max-w-2xl mb-4 text-4xl font-extrabold text-black leading-none tracking-tight md:text-5xl xl:text-6xl">
-                  Connecting pets with <br /> their forever homes
-                </h1>
-                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl font__poppins">
-                  We're a non-profit dedicated to creating a world where every pet has a home.
-                  Through our platform, we facilitate the adoption of pets from shelters and rescues,
-                  and help you find your furry companion.
-                </p>
-                <div className="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                  <a className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-green-500 border border-green-600 rounded-lg sm:w-auto hover:bg-green-600 focus:ring-4 focus:ring-green-300">
-                      Get Started &nbsp;<i className="right-arrow"></i>
-                  </a>
-              </div>
-            </div>
-            <div className="hidden lg:mt-0 lg:col-span-5 lg:flex text-black">
-              <img src="/images/hero_dog.jpg" alt="hero image" />
-            </div>
-        </div>
-    </section>
-   );
+import Image from "next/image";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+
+interface PetCardProps {
+  name: string;
+  species: string;
+  age: number;
+  breed: string;
 }
- 
-export default Hero;
+
+const PetCard = ({ name, species, age, breed }: PetCardProps) => {
+
+  return (
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        {/* <Image
+          className="rounded-t-lg"
+          src="/docs/images/blog/image-1.jpg"
+          alt="image"
+          width={200}
+          height={300}
+        /> */}
+        <ImagePlaceholder />
+      </a>
+      <div className="p-5">
+        <a href="#">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {name}
+          </h5>
+        </a>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {species} - {age} years old - {breed}
+        </p>
+        <a
+          href="#"
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Interested
+          <svg
+            className="w-3.5 h-3.5 ml-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default PetCard;
