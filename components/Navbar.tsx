@@ -43,7 +43,7 @@ export default function Navbar() {
           <ul className="font-light flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white justify-center">
             <li>
               <Link
-                href="#"
+                href="#Home"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:p-0 md:hover:text-black md:hover:bg-transparent navbar__elements"
                 aria-current="page"
               >
@@ -52,34 +52,26 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="#"
+                href="#About_Us"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:p-0 md:hover:text-black md:hover:bg-transparent navbar__elements"
               >
-                About
+                About Us
               </Link>
             </li>
             <li>
               <Link
-                href="#"
+                href="#Search"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:p-0 md:hover:text-black md:hover:bg-transparent navbar__elements"
               >
-                Services
+                Search
               </Link>
             </li>
             <li>
               <Link
-                href="#"
+                href="#Contact"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:p-0 md:hover:text-black  md:hover:bg-transparent navbar__elements"
               >
-                Reviews
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:p-0 md:hover:text-black  md:hover:bg-transparent navbar__elements"
-              >
-                Gallery
+                Contact
               </Link>
             </li>
           </ul>
@@ -88,11 +80,11 @@ export default function Navbar() {
           <ul className="font-light flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-sm bg-gray-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white justify-center pr-9 pl-9">
               <li>
                 <Link
-                  href="#Donate"
+                  href="#Join_Us"
                   className="block py-2 pl-3 pr-4 text-white hover:bg-gray-100 md:border-0 md:hover:text-white-700 md:p-0 md:hover:text-white-500 md:hover:bg-green-400 bg-green-500 rounded-full"
                   id="navbar__contact"
                 >
-                  Log in
+                  Join Us
                 </Link>
               </li>
           </ul>

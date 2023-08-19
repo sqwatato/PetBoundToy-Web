@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
 import Search from "@/components/Search"
+import Contact from "@/components/Contact"
 
 const animalsToAdopt = [
   "Species (Any)",	
@@ -257,6 +258,7 @@ export default function Home() {
         hermitCrabBreeds={hermitCrabBreeds}
         ageTypes={ageTypes}
       />
+      <Contact />
     </main>
   )
 }

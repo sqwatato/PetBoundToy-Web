@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import Image from "next/image";
 
 const Search = (props) => {
   const animalsList = props.animalsToAdopt;
@@ -63,7 +64,7 @@ const Search = (props) => {
   }
   
   return ( 
-    <section className="bg-white font__poppins">
+    <section className="bg-white font__poppins" id="Search">
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-base font-semibold tracking-wider text-green-500 uppercase">Search</h2>
@@ -99,9 +100,13 @@ const Search = (props) => {
               <label htmlFor="breed" className="sr-only">Breed</label>
               <select id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
               {
-                getBreeds(selectedAnimal).map((breed, index) => {
-                  return <option key={index}>{breed}</option>;
-                })
+                selectedAnimal !== "None" ? (
+                  getBreeds(selectedAnimal).map((breed, index) => (
+                    <option key={index}>{breed}</option>
+                  ))
+                ) : (
+                  <option>Breed (Any)</option>
+                )
               }
               </select>
             </div>
@@ -119,10 +124,10 @@ const Search = (props) => {
         </div>
       </div>
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" />
+        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg h-[50%] w-[50%]">
+          <img src="/images/dog.jpg" alt="hero image" />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <div className="font-bold text-xl mb-2 text-black">Title</div>
             <p className="text-gray-700 text-base">
               Custom Dog Description
             </p>
