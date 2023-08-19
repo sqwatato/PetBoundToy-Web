@@ -4,7 +4,7 @@
 
 export default function Contact() {
   return (
-    <section className="bg-gray-50 custom-hidden">
+    <section className="bg-gray-50 custom-hidden" id="Contact">
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md h-full pb-40">
         <div className="text-center">
           <h2 className="text-base font-semibold tracking-wider text-green-500 uppercase">Contact</h2>
