@@ -48,6 +48,7 @@ const dogBreeds = [
   "Golden Retriever",
   "Great Dane",
   "Havanese",
+  "Husky",
   "Labrador Retriever",
   "Maltese",
   "Mastiff",

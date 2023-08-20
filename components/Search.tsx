@@ -50,7 +50,9 @@ const Search = (props: any) => {
   const hermitCrabBreeds = props.hermitCrabBreeds;
   const ageTypes = props.ageTypes;
 
-  let [selectedAnimal, setSelectedAnimal] = useState("None");
+  let [selectedAnimal, setSelectedAnimal] = useState("Species (Any)");
+  let [selectedBreed, setSelectedBreed] = useState("Breed (Any)");
+  let [selectedAge, setSelectedAge] = useState("Age (Any)");
   const [pets, setPets] = useState<PetCardProps[]>([]);
 
   useEffect(() => {
@@ -92,8 +94,46 @@ const Search = (props: any) => {
       case "Hermit Crabs":
         return hermitCrabBreeds;
       default:
-        return [];
+        return ["Breed (Any)"];
     }
+  }
+
+  function sortPets(pet) {
+    //Testing Statements
+    // console.log("Selected Animal: " + selectedAnimal + " | Pet Species: " + pet.species);
+    // console.log("Selected Breed: " + selectedBreed + " | Pet Breed: " + pet.breed);
+    // console.log("Selected Age: " + selectedAge + " | Pet Age: " + pet.age.toString());
+
+    //Fixing Selected Animal Formatting
+    let testingSelectedAnimal = selectedAnimal.trim();
+    if (selectedAnimal.indexOf(")") !== -1) { testingSelectedAnimal = testingSelectedAnimal.substring(0, testingSelectedAnimal.indexOf("(")).trim() }
+    testingSelectedAnimal = testingSelectedAnimal.substring(0, testingSelectedAnimal.lastIndexOf("s"));
+
+
+
+    console.log("Testing Selected Animal: " + testingSelectedAnimal); 
+    if (
+      (selectedAnimal === "Species (Any)" || testingSelectedAnimal === pet.species) &&
+      (selectedBreed === "Breed (Any)" || selectedBreed === pet.breed) &&
+      (selectedAge === "Age (Any)" || selectedAge === pet.age.toString())
+    ) {
+      return (
+        <PetCard
+          key={pet.url}
+          type={pet.type}
+          name={pet.name}
+          age={pet.age}
+          species={pet.species}
+          breed={pet.breed}
+          gender={pet.gender}
+          size={pet.size}
+          description={pet.description}
+          shelter={pet.shelter}
+          image={pet.image}
+        />
+      );
+    }
+    return null;
   }
   
   return ( 
@@ -131,7 +171,7 @@ const Search = (props: any) => {
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="breed" className="sr-only">Breed</label>
-              <select id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
+              <select onChange={(event) => setSelectedBreed(event.target.value)} id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
               {
                 selectedAnimal !== "None" ? (
                   getBreeds(selectedAnimal).map((breed: string, index: number) => (
@@ -145,7 +185,7 @@ const Search = (props: any) => {
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="age" className="sr-only">Age</label>
-              <select id="age" name="age" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
+              <select onChange={(event) => setSelectedAge(event.target.value)} id="age" name="age" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
                 <option>Age (Any)</option>
                 <option>Baby</option>
                 <option>Young</option>
@@ -157,12 +197,12 @@ const Search = (props: any) => {
         </div>
       </div>
       <div className="inline-flex">
-        {pets.map((pet) => (
-          <PetCard key={pet.url} type={pet.type} name={pet.name} age={pet.age} species={pet.species} breed={pet.breed} gender={pet.gender} size={pet.size} description={pet.description} shelter={pet.shelter} image={pet.image} />
-        ))}
+        {
+          pets.map((pet) => (
+            sortPets(pet)
+          ))
+        }
       </div>
-      
-      
     </section>
   );
 }
