@@ -225,14 +225,6 @@ const hermitCrabBreeds = [
   "Coenobita compressus (Ecuadorian Hermit Crab)"
 ];
 
-const ageTypes = [
-  "Age (Any)",
-  "Baby",
-  "Young",
-  "Adult",
-  "Senior"
-];
-
 export default function Home() {
   return (
     <main>
@@ -257,7 +249,6 @@ export default function Home() {
         smallBirdBreeds={smallBirdBreeds}
         smallRodentBreeds={smallRodentBreeds}
         hermitCrabBreeds={hermitCrabBreeds}
-        ageTypes={ageTypes}
       />
       <Contact />
     </main>

@@ -48,7 +48,6 @@ const Search = (props: any) => {
   const smallBirdBreeds = props.smallBirdBreeds;
   const smallRodentBreeds = props.smallRodentBreeds;
   const hermitCrabBreeds = props.hermitCrabBreeds;
-  const ageTypes = props.ageTypes;
 
   let [selectedAnimal, setSelectedAnimal] = useState("Species (Any)");
   let [selectedBreed, setSelectedBreed] = useState("Breed (Any)");
@@ -185,13 +184,23 @@ const Search = (props: any) => {
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="age" className="sr-only">Age</label>
-              <select onChange={(event) => setSelectedAge(event.target.value)} id="age" name="age" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                <option>Age (Any)</option>
-                <option>Baby</option>
-                <option>Young</option>
-                <option>Adult</option>
-                <option>Senior</option>
-              </select>
+              <input
+                type="text"
+                pattern="[0-9]*"
+                onChange={(event) => {
+                  const input = event.target.value;
+                  const numericInput = input.replace(/\D/g, "");
+                  if (numericInput === "") {
+                    setSelectedAge("Age (Any)");
+                  } else {
+                    setSelectedAge(numericInput);
+                  }
+                }}
+                id="age"
+                name="age"
+                placeholder="Age (Any)"
+                className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              />
             </div>
           </form>
         </div>
