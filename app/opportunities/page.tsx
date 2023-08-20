@@ -4,7 +4,15 @@ import PetCard from '@/components/PetCard';
 import Image from "next/image";
 import api from "@/api";
 import Cookies from 'js-cookie'
-
+interface ShelterProp {
+  url: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zip_code: string;
+  phone_number: string;
+}
 interface PetCardProps {
   type: string;
   name: string;
@@ -14,7 +22,7 @@ interface PetCardProps {
   gender: string;
   size: string;
   description: string;
-  shelter: string;
+  shelter: ShelterProp;
   image: string;
   url: string;
 }

@@ -1,6 +1,16 @@
 import Image from "next/image";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
+interface ShelterProp {
+  url: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zip_code: string;
+  phone_number: string;
+}
+
 interface PetCardProps {
   type: string;
   name: string;
@@ -10,7 +20,7 @@ interface PetCardProps {
   gender: string;
   size: string;
   description: string;
-  shelter: string;
+  shelter: ShelterProp;
   image: string;
 }
 
@@ -34,7 +44,7 @@ const PetCard = ({ type, name, species, breed, age, gender, size, description, s
         </div>
         <div className="px-6 py-4">
           <p className="text-gray-700 text-sm">
-            {shelter}
+            {shelter.name}
           </p>
         </div>
       </div>
