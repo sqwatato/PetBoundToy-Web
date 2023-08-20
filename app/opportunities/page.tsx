@@ -6,10 +6,16 @@ import api from "@/api";
 import Cookies from 'js-cookie'
 
 interface PetCardProps {
+  type: string;
   name: string;
-  age: number;
   species: string;
   breed: string;
+  age: number;
+  gender: string;
+  size: string;
+  description: string;
+  shelter: string;
+  image: string;
   url: string;
 }
 
@@ -17,6 +23,7 @@ async function fetchData(): Promise<PetCardProps[]> {
   try {
     const response = await api.get('opportunities/');
     const data = response.data;
+    console.log(data)
     return data.results;
   } catch (error) {
     console.error(error);
@@ -34,7 +41,7 @@ export default function Opportunities() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {pets.map((pet) => (
-        <PetCard key={pet.url} name={pet.name} age={pet.age} species={pet.species} breed={pet.breed} />
+        <PetCard key={pet.url} type={pet.type} name={pet.name} age={pet.age} species={pet.species} breed={pet.breed} gender={pet.gender} size={pet.size} description={pet.description} shelter={pet.shelter} image={pet.image} />
       ))}
     </div>
   )

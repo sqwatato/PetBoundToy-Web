@@ -1,8 +1,36 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import api from "@/api";
+import PetCard from "@/components/PetCard";
 
-const Search = (props) => {
+interface PetCardProps {
+  type: string;
+  name: string;
+  species: string;
+  breed: string;
+  age: number;
+  gender: string;
+  size: string;
+  description: string;
+  shelter: string;
+  image: string;
+  url: string;
+}
+
+async function fetchData(): Promise<PetCardProps[]> {
+  try {
+    const response = await api.get('opportunities/');
+    const data = response.data;
+    console.log(data)
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+const Search = (props: any) => {
   const animalsList = props.animalsToAdopt;
   const dogBreeds = props.dogBreeds;
   const catBreeds = props.catBreeds;
@@ -23,8 +51,13 @@ const Search = (props) => {
   const ageTypes = props.ageTypes;
 
   let [selectedAnimal, setSelectedAnimal] = useState("None");
+  const [pets, setPets] = useState<PetCardProps[]>([]);
 
-  function getBreeds(animal) {
+  useEffect(() => {
+    fetchData().then((data) => setPets(data));
+  }, []);
+
+  function getBreeds(animal: string) {
     switch (animal) {
       case "Dogs":
         return dogBreeds;
@@ -90,8 +123,8 @@ const Search = (props) => {
               <label htmlFor="species" className="sr-only">Species</label>
               <select onChange={(event) => setSelectedAnimal(event.target.value)} id="species" name="species" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
                 {
-                  animalsList.map((animal) => {
-                    return <option>{animal}</option>
+                  animalsList.map((animal: string, index: number) => {
+                    return <option key={index}>{animal}</option>
                   })
                 }
               </select>
@@ -101,7 +134,7 @@ const Search = (props) => {
               <select id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
               {
                 selectedAnimal !== "None" ? (
-                  getBreeds(selectedAnimal).map((breed, index) => (
+                  getBreeds(selectedAnimal).map((breed: string, index: number) => (
                     <option key={index}>{breed}</option>
                   ))
                 ) : (
@@ -123,23 +156,13 @@ const Search = (props) => {
           </form>
         </div>
       </div>
-      <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg h-[50%] w-[50%]">
-          <img src="/images/dog.jpg" alt="hero image" />
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2 text-black">Title</div>
-            <p className="text-gray-700 text-base">
-              Custom Dog Description
-            </p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#location</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#age</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#animal_type</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#breed</span>
-          </div>
-        </div>
+      <div className="inline-flex">
+        {pets.map((pet) => (
+          <PetCard key={pet.url} type={pet.type} name={pet.name} age={pet.age} species={pet.species} breed={pet.breed} gender={pet.gender} size={pet.size} description={pet.description} shelter={pet.shelter} image={pet.image} />
+        ))}
       </div>
+      
+      
     </section>
   );
 }
