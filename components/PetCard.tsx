@@ -55,7 +55,7 @@ const PetCard = ({ type, name, breed, age, gender, description, shelter, image }
           </p>
         </div>
         <div className="absolute bottom-0 right-0 flex space-x-2 p-4">
-          
+          <Heart isActive={isHeartActive} onClick={handleHeartClick}/>
         </div>
       </div>
     </div>
