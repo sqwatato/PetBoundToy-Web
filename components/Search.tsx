@@ -133,6 +133,7 @@ const Search = (props: any) => {
           </p>
         </div>
         <div className="mt-12">
+        <h1 className="text-black font-bold font__poppins">Filters</h1>
           <form className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="sm:col-span-2 lg:col-span-3 relative">
             <label htmlFor="search" className="sr-only">Search</label>

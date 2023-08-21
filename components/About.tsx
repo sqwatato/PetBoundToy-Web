@@ -11,7 +11,7 @@ const About = () => {
         <div className="mt-20">
           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 font__poppins">
             <div>
-              <dt className="text-2xl font-medium text-gray-900 font__poppins">Our Mission</dt>
+              <dt className="text-2xl font-bold text-gray-900 font__poppins">Our Mission</dt>
               <dd className="mt-2 text-base text-gray-500">
                 To lighten the load of shelters and rescues by providing a platform for them to
                 connect with potential adopters and donors. We hope to make the adoption process
@@ -19,7 +19,7 @@ const About = () => {
               </dd>
             </div>
             <div>
-              <dt className="text-2xl font-medium text-gray-900 font__poppins">Our Vision</dt>
+              <dt className="text-2xl font-bold text-gray-900 font__poppins">Our Vision</dt>
               <dd className="mt-2 text-base text-gray-500">
                 We hope to create a world in which pets are able to find happy homes, and
                 where shelters and rescues are able to find the resources they need to continue

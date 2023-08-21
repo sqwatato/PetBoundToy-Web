@@ -46,28 +46,53 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="text-gray-500">
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          className="border-2 border-gray-300"
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        className="border-2 border-gray-300"
-        />
-      </label>
-      <br />
-      <button type="submit">Login</button>
+    <form onSubmit={handleSubmit} className="text-gray-50 p-4 rounded-md">
+      <div className="mb-4">
+        <label htmlFor="username" className="sr-only">
+          Username
+        </label>
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" clipRule="evenodd" d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"/>
+              <path d="M13.5 13.5l4.5 4.5"/>
+            </svg>
+          </div>
+          <input
+            id="username"
+            name="username"
+            className="block w-full py-3 pl-10 pr-3 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            placeholder="Username"
+            type="text"
+          />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="password" className="sr-only">
+          Password
+        </label>
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" clipRule="evenodd" d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"/>
+              <path d="M13.5 13.5l4.5 4.5"/>
+            </svg>
+          </div>
+          <input
+            id="password"
+            name="password"
+            className="block w-full py-3 pl-10 pr-3 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+      </div>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-green-500 border border-green-600 rounded-lg sm:w-auto focus:ring-4 focus:ring-green-300"
+      >
+        Login <i className="fas fa-arrow-right ml-1"></i>
+      </button>
     </form>
   );
 }
