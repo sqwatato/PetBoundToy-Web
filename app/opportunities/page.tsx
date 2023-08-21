@@ -27,6 +27,6 @@ export default function Opportunities() {
   }, []);
 
   return (
-    <Form {...shelters} />
+    <Form shelters={shelters} />
   )
 }

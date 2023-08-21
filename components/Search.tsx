@@ -134,8 +134,8 @@ const Search = (props: any) => {
         </div>
         <div className="mt-12">
           <form className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="sm:col-span-2 lg:col-span-3">
-              <label htmlFor="search" className="sr-only">Search</label>
+          <div className="sm:col-span-2 lg:col-span-3 relative">
+            <label htmlFor="search" className="sr-only">Search</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -143,7 +143,13 @@ const Search = (props: any) => {
                     <path d="M13.5 13.5l4.5 4.5"/>
                   </svg>
                 </div>
-                <input id="search" name="search" className="block w-full py-3 pl-10 pr-3 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" placeholder="Search by city, state, or zip code" type="search" />
+                <input
+                  id="search"
+                  name="search"
+                  className="block w-full py-3 pl-10 pr-3 text-base text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  placeholder="Search by city, state, or zip code"
+                  type="search"
+                />
               </div>
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
@@ -159,15 +165,15 @@ const Search = (props: any) => {
             <div className="sm:col-span-2 lg:col-span-1">
               <label htmlFor="breed" className="sr-only">Breed</label>
               <select onChange={(event) => setSelectedBreed(event.target.value)} id="breed" name="breed" className="block w-full py-3 pl-3 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-              {
-                selectedAnimal !== "None" ? (
-                  getBreeds(selectedAnimal).map((breed: string, index: number) => (
-                    <option key={index}>{breed}</option>
-                  ))
-                ) : (
-                  <option>Breed (Any)</option>
-                )
-              }
+                {
+                  selectedAnimal !== "None" ? (
+                    getBreeds(selectedAnimal).map((breed: string, index: number) => (
+                      <option key={index}>{breed}</option>
+                    ))
+                  ) : (
+                    <option>Breed (Any)</option>
+                  )
+                }
               </select>
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
@@ -193,12 +199,16 @@ const Search = (props: any) => {
           </form>
         </div>
       </div>
-      <div className="inline-flex">
-        {
-          pets.map((pet) => (
-            sortPets(pet)
-          ))
-        }
+      <div className="flex justify-center">
+        <div className="grid grid-cols-3 gap-4">
+          {
+            pets.map((pet) => (
+              <div key={pet.id} className="flex justify-center">
+                {sortPets(pet)}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import logo from "../public/logo.png";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white fixed w-screen" id="navbar__custom">
+    <nav className="bg-white fixed w-screen opacity-100" id="navbar__custom" style={{zIndex: 6}}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div>
           <Link href="/" className="text-xl text-black font-bold font__poppins">

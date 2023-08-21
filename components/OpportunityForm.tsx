@@ -1,7 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PetCardProps, ShelterProp } from "./Props";
-export default function Form(shelters: ShelterProp[]) {
+export default function Form({ shelters }: { shelters: ShelterProp[] }) {
   const [formData, setFormData] = useState({} as PetCardProps);
+
+  const handleImageChange = (event:any) => {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setFormData({
+          ...formData,
+          image: e.target.result,
+        });
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
 
   const handleChange = (event: any) => {
     setFormData({
@@ -12,12 +25,32 @@ export default function Form(shelters: ShelterProp[]) {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(formData)
+    console.log(formData);
   };
+
+  useEffect(() => {
+    console.log(shelters);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow">
       <div className="mb-4">
+        <div className="mb-4">
+          <label
+            htmlFor="image"
+            className="block text-gray-700 font-medium mb-2"
+          >
+            Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full border border-gray-300 rounded p-2"
+          />
+        </div>
         <label htmlFor="type" className="block text-gray-700 font-medium mb-2">
           Type
         </label>
@@ -139,7 +172,6 @@ export default function Form(shelters: ShelterProp[]) {
         <select
           name="shelter"
           id="shelter"
-          value={formData.shelter.id}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded p-2"
         >
