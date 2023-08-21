@@ -104,20 +104,22 @@ const Search = (props: any) => {
       (selectedAge === "Age (Any)" || selectedAge === pet.age.toString())
     ) {
       return (
-        <PetCard
-          key={pet.id}
-          type={pet.type}
-          name={pet.name}
-          age={pet.age}
-          species={pet.species}
-          breed={pet.breed}
-          gender={pet.gender}
-          size={pet.size}
-          description={pet.description}
-          shelter={pet.shelter}
-          image={pet.image}
-          id={pet.id}
-        />
+        <div key={pet.id} className="flex justify-center">
+          <PetCard
+            key={pet.id}
+            type={pet.type}
+            name={pet.name}
+            age={pet.age}
+            species={pet.species}
+            breed={pet.breed}
+            gender={pet.gender}
+            size={pet.size}
+            description={pet.description}
+            shelter={pet.shelter}
+            image={pet.image}
+            id={pet.id}
+          />
+        </div>
       );
     }
     return null;
@@ -204,9 +206,7 @@ const Search = (props: any) => {
         <div className="grid grid-cols-3 gap-4">
           {
             pets.map((pet) => (
-              <div key={pet.id} className="flex justify-center">
-                {sortPets(pet)}
-              </div>
+              sortPets(pet)
             ))
           }
         </div>
