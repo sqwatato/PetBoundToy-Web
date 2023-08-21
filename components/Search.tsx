@@ -3,20 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import api from "@/api";
 import PetCard from "@/components/PetCard";
-
-interface PetCardProps {
-  type: string;
-  name: string;
-  species: string;
-  breed: string;
-  age: number;
-  gender: string;
-  size: string;
-  description: string;
-  shelter: string;
-  image: string;
-  url: string;
-}
+import { PetCardProps } from "@/components/Props";
 
 async function fetchData(): Promise<PetCardProps[]> {
   try {
@@ -97,7 +84,7 @@ const Search = (props: any) => {
     }
   }
 
-  function sortPets(pet) {
+  function sortPets(pet: PetCardProps) {
     //Testing Statements
     // console.log("Selected Animal: " + selectedAnimal + " | Pet Species: " + pet.species);
     // console.log("Selected Breed: " + selectedBreed + " | Pet Breed: " + pet.breed);
@@ -118,7 +105,7 @@ const Search = (props: any) => {
     ) {
       return (
         <PetCard
-          key={pet.url}
+          key={pet.id}
           type={pet.type}
           name={pet.name}
           age={pet.age}
@@ -129,6 +116,7 @@ const Search = (props: any) => {
           description={pet.description}
           shelter={pet.shelter}
           image={pet.image}
+          id={pet.id}
         />
       );
     }

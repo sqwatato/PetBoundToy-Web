@@ -1,28 +1,6 @@
 import Image from "next/image";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
-
-interface ShelterProp {
-  url: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  zip_code: string;
-  phone_number: string;
-}
-
-interface PetCardProps {
-  type: string;
-  name: string;
-  species: string;
-  breed: string;
-  age: number;
-  gender: string;
-  size: string;
-  description: string;
-  shelter: ShelterProp;
-  image: string;
-}
+import { PetCardProps } from "@/components/Props";
 
 const PetCard = ({ type, name, species, breed, age, gender, size, description, shelter, image }: PetCardProps) => {
 
