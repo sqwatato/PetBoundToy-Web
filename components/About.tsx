@@ -28,6 +28,9 @@ const About = () => {
             </div>
           </dl>
         </div>
+        <div className="hidden lg:flex lg:justify-center lg:col-span-5 text-black w-[50%] mx-auto">
+          <img src="/images/team.png" alt="About Us Image" />
+        </div>
       </div>
     </section>
   );
