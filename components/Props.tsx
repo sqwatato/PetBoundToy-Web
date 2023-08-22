@@ -6,10 +6,11 @@ export interface ShelterProp {
   state: string;
   zip_code: string;
   phone_number: string;
-  id: number;
+  id: any;
 }
 
 export interface PetCardProps {
+  url: string;
   type: string;
   name: string;
   species: string;
@@ -20,5 +21,5 @@ export interface PetCardProps {
   description: string;
   shelter: ShelterProp;
   image: string;
-  id: number;
+  id: any;
 }

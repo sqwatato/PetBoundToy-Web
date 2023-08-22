@@ -6,22 +6,25 @@ import Cookies from "js-cookie";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
 interface TokenProps {
-    token: string;
+  token: string;
 }
 
-async function fetchData(username: string, password: string): Promise<TokenProps> {
-    try {
-      const response = await api.post('api-token-auth/', {
-        "username": username,
-        "password": password
-      });
-      const data = response.data;
-      return data;
-    } catch (error) {
-      console.error(error);
-      return {token: ""};
-    }
+async function fetchData(
+  username: string,
+  password: string
+): Promise<TokenProps> {
+  try {
+    const response = await api.post("api-token-auth/", {
+      username: username,
+      password: password,
+    });
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    return { token: "" };
   }
+}
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -53,9 +56,17 @@ export default function Login() {
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" clipRule="evenodd" d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"/>
-              <path d="M13.5 13.5l4.5 4.5"/>
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"
+              />
+              <path d="M13.5 13.5l4.5 4.5" />
             </svg>
           </div>
           <input
@@ -73,9 +84,17 @@ export default function Login() {
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" clipRule="evenodd" d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"/>
-              <path d="M13.5 13.5l4.5 4.5"/>
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.25 1.5a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM0 8.25a8.25 8.25 0 1116.5 0 8.25 8.25 0 01-16.5 0z"
+              />
+              <path d="M13.5 13.5l4.5 4.5" />
             </svg>
           </div>
           <input

@@ -1,15 +1,35 @@
-import Head from 'next/head';
-import Login from '@/components/OpportunityForm';
-import Opportunities from '../opportunities/page';
+"use client"
+import React, { useState, useEffect } from 'react';
+import PetCard from '@/components/PetCard';
+import Image from "next/image";
+import api from "@/api";
+import Cookies from 'js-cookie'
+import { PetCardProps, ShelterProp } from "@/components/Props";
+import Form from '@/components/OpportunityForm';
 
-export default function LoginPage() {
+async function fetchData(): Promise<ShelterProp[]> {
+  try {
+    const response = await api.get('shelters/');
+    const data = response.data;
+    console.log(data)
+    console.log(response)
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export default function Opportunities() {
+  const [shelters, setShelters] = useState<ShelterProp[]>([]);
+
+  useEffect(() => {
+    fetchData().then((data) => setShelters(data));
+  }, []);
+
   return (
-    <>
-      <Head>
-        <title>Create Opportunity</title>
-      </Head>
-      <h1>Create Opportunity</h1>
-      <Opportunities />
-    </>
-  );
+    <div className="bg-gray-50 rounded shadow p-4 w-full max-w-lg mx-auto">
+      <Form shelters={shelters} />
+    </div>
+  )
 }

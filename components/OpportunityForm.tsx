@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
 import { PetCardProps, ShelterProp } from "./Props";
+import api from "@/api";
+import formapi from "@/apiform";
+
+function extractNumber(url: string): number {
+    const match = /(\d+)/.exec(url);
+    if (match === null) {
+      return -1;
+    }
+    return Number(match[1]);
+  }
+  
 export default function Form({ shelters }: { shelters: ShelterProp[] }) {
   const [formData, setFormData] = useState({} as PetCardProps);
 
-  const handleImageChange = (event:any) => {
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setFormData({
-          ...formData,
-          image: e.target.result,
-        });
+        if (e.target && typeof e.target.result === "string") {
+          setFormData({
+            ...formData,
+            image: e.target.result,
+          });
+        }
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -22,10 +35,43 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
       [event.target.name]: event.target.value,
     });
   };
+//   async function fetchData(username: string, password: string): Promise<TokenProps> {
+//     try {
+//       const response = await api.post('api-token-auth/', {
+//         "username": username,
+//         "password": password
+//       });
+//       const data = response.data;
+//       return data;
+//     } catch (error) {
+//       console.error(error);
+//       return {token: ""};
+//     }
+//   }
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+
+    const form = event.target;
+    console.log("event", form);
+
+    const formData = {
+      image: form.image.files[0], 
+      type: form.type.value,
+      name: form.name.value,
+      species: form.species.value,
+      breed: form.breed.value,
+      age: form.age.value,
+      gender: form.gender.value,
+      size: form.size.value,
+      description: form.description.value,
+      shelter: Number(form.shelter.value),
+      // and so on for other fields
+    }
+    console.log("formData", formData);
+    formapi.post("opportunities/", formData).then((response) => {
+      console.log(response);
+    })
   };
 
   useEffect(() => {
@@ -33,7 +79,11 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow">
+    <form
+      onSubmit={handleSubmit}
+      className="p-4 bg-white rounded shadow w-full max-w-lg mx-aut text-black"
+      encType="multipart/form-data"
+    >
       <div className="mb-4">
         <div className="mb-4">
           <label
@@ -54,14 +104,16 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
         <label htmlFor="type" className="block text-gray-700 font-medium mb-2">
           Type
         </label>
-        <input
-          type="text"
+        <select
           name="type"
           id="type"
           value={formData.type}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded p-2"
-        />
+        >
+          <option value="A">Adoption</option>
+          <option value="F">Foster</option>
+        </select>
       </div>
       <div className="mb-4">
         <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
@@ -119,33 +171,35 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="gender"
-          className="block text-gray-700 font-medium mb-2"
-        >
+        <label htmlFor="gender" className="block text-gray-700 font-medium mb-2">
           Gender
         </label>
-        <input
-          type="text"
-          name="gender"
-          id="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
-        />
+        <select
+            name="gender"
+            id="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded p-2"
+        >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
       </div>
       <div className="mb-4">
         <label htmlFor="size" className="block text-gray-700 font-medium mb-2">
           Size
         </label>
-        <input
-          type="text"
+        <select
           name="size"
           id="size"
           value={formData.size}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded p-2"
-        />
+        >
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
       </div>
       <div className="mb-4">
         <label
@@ -176,7 +230,8 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           className="w-full border border-gray-300 rounded p-2"
         >
           {shelters.map((shelter) => (
-            <option key={shelter.id} value={shelter.id}>
+            // extract number from url
+            <option key={extractNumber(shelter.url)} value={extractNumber(shelter.url)}>
               {shelter.name}
             </option>
           ))}
