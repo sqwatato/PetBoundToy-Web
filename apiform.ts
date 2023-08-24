@@ -6,7 +6,8 @@ const api = axios.create({
   baseURL: 'http://127.0.0.1:8000/api/',
   headers: {
     "Content-Type": "multipart/form-data",
-    "Authorization": "Token 043ac7dda62905f56ca9d0029ccf9dff922dd54d"
+    "Authorization": "Token 043ac7dda62905f56ca9d0029ccf9dff922dd54d",
+    "Accept": "application/json",
   },
 })
 api.interceptors.request.use((config) => {
