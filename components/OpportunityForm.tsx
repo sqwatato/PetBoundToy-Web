@@ -84,44 +84,38 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
   }, []);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="p-4 bg-white rounded shadow w-full max-w-lg mx-aut text-black"
-    >
+    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-md shadow-md w-full max-w-lg">
+      <div className="mb-6">
+        <label htmlFor="image" className="block text-sm font-medium text-black">
+          Image
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+        />
+      </div>
       <div className="mb-4">
-        <div className="mb-4">
-          <label
-            htmlFor="image"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Image
-          </label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="w-full border border-gray-300 rounded p-2"
-          />
-        </div>
-        <label htmlFor="type" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="type" className="block text-sm font-medium text-black">
           Type
         </label>
         <select
           name="type"
           id="type"
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           required
         >
-          <option hidden disabled selected value="tmp"> -- select an option -- </option>
+          <option hidden disabled value="tmp"> -- select an option -- </option>
           <option value="A">Adoption</option>
           <option value="F">Foster</option>
         </select>
       </div>
       <div className="mb-4">
-        <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-black">
           Name
         </label>
         <input
@@ -130,14 +124,11 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           id="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="species"
-          className="block text-gray-700 font-medium mb-2"
-        >
+        <label htmlFor="species" className="block text-sm font-medium text-black">
           Species
         </label>
         <input
@@ -146,11 +137,11 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           id="species"
           value={formData.species}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="breed" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="breed" className="block text-sm font-medium text-black">
           Breed
         </label>
         <input
@@ -159,11 +150,11 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           id="breed"
           value={formData.breed}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="age" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="age" className="block text-sm font-medium text-black">
           Age
         </label>
         <input
@@ -172,47 +163,44 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           id="age"
           value={formData.age}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="gender" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="gender" className="block text-sm font-medium text-black">
           Gender
         </label>
         <select
-            name="gender"
-            id="gender"
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded p-2"
-            required
+          name="gender"
+          id="gender"
+          onChange={handleChange}
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+          required
         >
-            <option hidden disabled selected value="tmp"> -- select an option -- </option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+          <option hidden disabled value="tmp"> -- select an option -- </option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
       </div>
       <div className="mb-4">
-        <label htmlFor="size" className="block text-gray-700 font-medium mb-2">
+        <label htmlFor="size" className="block text-sm font-medium text-black">
           Size
         </label>
         <select
           name="size"
           id="size"
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           required
         >
-          <option hidden disabled selected value="tmp"> -- select an option -- </option>
+          <option hidden disabled value="tmp"> -- select an option -- </option>
           <option value="Small">Small</option>
           <option value="Medium">Medium</option>
           <option value="Large">Large</option>
         </select>
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="description"
-          className="block text-gray-700 font-medium mb-2"
-        >
+        <label htmlFor="description" className="block text-sm font-medium text-black">
           Description
         </label>
         <textarea
@@ -220,26 +208,22 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
           id="description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="shelter"
-          className="block text-gray-700 font-medium mb-2"
-        >
+        <label htmlFor="shelter" className="block text-sm font-medium text-black">
           Shelter
         </label>
         <select
           name="shelter"
           id="shelter"
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded p-2"
+          className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           required
         >
-          <option hidden disabled selected value="tmp"> -- select an option -- </option>
+          <option hidden disabled value="tmp"> -- select an option -- </option>
           {shelters.map((shelter) => (
-            // extract number from url
             <option key={extractNumber(shelter.url)} value={extractNumber(shelter.url)}>
               {shelter.name}
             </option>
@@ -248,7 +232,7 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
       </div>
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="w-full flex justify-center py-2 px-4 bg-green-500 rounded-md text-white font-medium hover:bg-green-600 focus:ring-4 focus:ring-green-300 focus:outline-none mt-4"
       >
         Submit
       </button>

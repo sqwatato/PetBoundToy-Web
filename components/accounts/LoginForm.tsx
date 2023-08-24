@@ -49,7 +49,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200">
+    <div className="flex items-center justify-center min-h-screen bg-green-500">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-md shadow-md w-96">
         <div className="mb-6">
           <label htmlFor="username" className="block text-sm font-medium text-gray-600">
