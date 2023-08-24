@@ -62,7 +62,7 @@ body {
     )
     rgb(var(--background-start-rgb));
   scroll-behavior: smooth;
-  animation: fadeIn 1.5s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes fadeIn {

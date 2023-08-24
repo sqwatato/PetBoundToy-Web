@@ -1,8 +1,8 @@
-import Navbar from "@/components/Navbar"
-import Hero from "@/components/Hero"
-import About from "@/components/About"
-import Search from "@/components/Search"
-import Contact from "@/components/Contact"
+import Navbar from "@/components/home/Navbar"
+import Hero from "@/components/home/Hero"
+import About from "@/components/home/About"
+import Search from "@/components/home/Search"
+import Contact from "@/components/home/Contact"
 
 const animalsToAdopt = [
   "Species (Any)",	

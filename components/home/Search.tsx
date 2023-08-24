@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import api from "@/api";
-import PetCard from "@/components/PetCard";
-import { PetCardProps } from "@/components/Props";
+import PetCard from "@/components/home/PetCard";
+import { PetCardProps } from "@/components/home/Props";
 
 async function fetchData(): Promise<PetCardProps[]> {
   try {

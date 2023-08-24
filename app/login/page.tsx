@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Login from '@/components/LoginForm';
+import Login from '@/components/accounts/LoginForm';
 
 export default function LoginPage() {
   return (
@@ -7,7 +7,6 @@ export default function LoginPage() {
       <Head>
         <title>Login</title>
       </Head>
-      <h1>Login</h1>
       <Login />
     </>
   );
