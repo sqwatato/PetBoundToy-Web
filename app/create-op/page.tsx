@@ -1,10 +1,10 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import PetCard from '@/components/PetCard';
+import PetCard from '@/components/home/PetCard';
 import Image from "next/image";
 import api from "@/api";
 import Cookies from 'js-cookie'
-import { PetCardProps, ShelterProp } from "@/components/Props";
+import { PetCardProps, ShelterProp } from "@/components/home/Props";
 import Form from '@/components/OpportunityForm';
 
 async function fetchData(): Promise<ShelterProp[]> {
