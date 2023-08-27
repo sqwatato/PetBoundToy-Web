@@ -1,5 +1,11 @@
 'use client'
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import InputAdornment from "@mui/material/InputAdornment";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Input from "@mui/material/Input";
 
 const SignUpForm = () => {
   const [isOrganization, setIsOrganization] = useState(false);
@@ -8,15 +14,27 @@ const SignUpForm = () => {
     event.preventDefault();
     console.log("signup submitted");
   }
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
   
   return (
-    <div className="flex items-center justify-center min-h-screen bg-green-500">
+    <div className="flex items-center justify-center min-h-screen bg-green-400">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-md shadow-md w-96">
         <div className="mb-6">
           <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-            Name<span className="text-red-500">*</span>
+            Name
           </label>
-          <input
+          <Input
             id="name"
             name="name"
             className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
@@ -27,15 +45,36 @@ const SignUpForm = () => {
         </div>
         <div className="mb-6">
           <label htmlFor="emailOrPhone" className="block text-sm font-medium text-gray-600">
-            Email or Phone<span className="text-red-500">*</span>
+            Email or Phone
           </label>
-          <input
+          <Input
             id="emailOrPhone"
             name="emailOrPhone"
             className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
             placeholder="Email or Phone"
             type="text"
             required
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="emailOrPhone" className="block text-sm font-medium text-gray-600">
+            Password
+          </label>
+          <Input
+            id="password"
+            name="password"
+            className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            placeholder="Password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton onClick={handlePasswordVisibility} onMouseDown={handleMouseDownPassword}>
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </div>
         <div className="mb-6">
@@ -56,7 +95,7 @@ const SignUpForm = () => {
             <label htmlFor="businessName" className="block text-sm font-medium text-gray-600">
               Business<span className="text-red-500">*</span>
             </label>
-            <input
+            <Input
               id="businessName"
               name="businessName"
               className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"

@@ -85,9 +85,10 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
 
   return (
 <div className="bg-white p-4 md:p-8 rounded-md shadow-md w-full max-w-screen-xl mx-auto flex flex-wrap justify-between">
-  <h1 className="w-full text-3xl md:text-4xl xl:text-5xl font-extrabold text-black leading-none tracking-tight text-center mb-6">
+<h1 className="w-full text-xl md:text-2xl xl:text-3xl font-extrabold text-black leading-none tracking-tight text-center mb-4">
     Create Opportunity
-  </h1>
+</h1>
+
   <div className="w-full md:w-1/2 pr-4 border-r border-gray-300">
     <form onSubmit={handleSubmit} className="mb-4">
       <label htmlFor="image" className="block text-sm font-medium text-black">
@@ -140,9 +141,25 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
         onChange={handleChange}
         className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
       />
+      <label htmlFor="shelter" className="block text-sm font-medium text-black mt-4">
+        Shelter
+      </label>
+      <select
+        name="shelter"
+        id="shelter"
+        onChange={handleChange}
+        className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+        required
+      >
+        <option hidden disabled value="tmp"> -- select an option -- </option>
+        {shelters.map((shelter) => (
+          <option key={extractNumber(shelter.url)} value={extractNumber(shelter.url)}>
+            {shelter.name}
+          </option>
+        ))}
+      </select>
     </form>
   </div>
-  
   <div className="w-full md:w-1/2 pl-4">
     <form onSubmit={handleSubmit} className="mb-4">
       <label htmlFor="breed" className="block text-sm font-medium text-black">
@@ -156,7 +173,6 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
         onChange={handleChange}
         className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
       />
-
       <label htmlFor="age" className="block text-sm font-medium text-black mt-4">
         Age
       </label>
@@ -210,25 +226,6 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
         onChange={handleChange}
         className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
       />
-
-      <label htmlFor="shelter" className="block text-sm font-medium text-black mt-4">
-        Shelter
-      </label>
-      <select
-        name="shelter"
-        id="shelter"
-        onChange={handleChange}
-        className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-        required
-      >
-        <option hidden disabled value="tmp"> -- select an option -- </option>
-        {shelters.map((shelter) => (
-          <option key={extractNumber(shelter.url)} value={extractNumber(shelter.url)}>
-            {shelter.name}
-          </option>
-        ))}
-      </select>
-      
       <button
         type="submit"
         className="w-full flex justify-center py-2 px-4 bg-green-500 rounded-md text-white font-medium hover:bg-green-600 focus:ring-4 focus:ring-green-300 focus:outline-none mt-4"

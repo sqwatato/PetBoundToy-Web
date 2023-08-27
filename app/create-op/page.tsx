@@ -28,7 +28,7 @@ export default function Opportunities() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-green-500 pt-[5%]">
+    <div className="flex items-center justify-center min-h-screen bg-green-400 pt-[5%]">
       <Form shelters={shelters} />
     </div>
   )
