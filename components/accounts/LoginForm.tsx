@@ -72,7 +72,7 @@ export default function Login() {
           id="username"
           name="username"
           className="mt-1 p-2 text-base w-full text-gray-900 placeholder-gray-500 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-          placeholder="username"
+          placeholder="Username"
           type="text"
         />
       </div>

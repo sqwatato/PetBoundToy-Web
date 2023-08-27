@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PetCardProps, ShelterProp } from "./Props";
+import { PetCardProps, ShelterProp } from "@/components/home/Props";
 import api from "@/api";
 import formapi from "@/apiform";
 
