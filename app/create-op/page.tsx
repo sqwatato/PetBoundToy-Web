@@ -13,7 +13,7 @@ async function fetchData(): Promise<ShelterProp[]> {
     const data = response.data;
     console.log(data)
     console.log(response)
-    return data.results;
+    return data;
   } catch (error) {
     console.error(error);
     return [];
