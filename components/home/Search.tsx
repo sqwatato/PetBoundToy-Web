@@ -118,6 +118,7 @@ const Search = (props: any) => {
             shelter={pet.shelter}
             image={pet.image}
             id={pet.id}
+            url={pet.url}
           />
         </div>
       );
