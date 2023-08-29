@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PetCardProps } from "@/components/Props";
+import { PetCardProps } from "@/components/home/Props";
 
 const PetCard = ({ type, name, breed, age, gender, description, shelter, image }: PetCardProps) => {
   const [isHeartActive, setHeartActive] = useState(false);
