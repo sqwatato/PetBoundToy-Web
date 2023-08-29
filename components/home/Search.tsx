@@ -10,7 +10,7 @@ async function fetchData(): Promise<PetCardProps[]> {
     const response = await api.get('opportunities/');
     const data = response.data;
     console.log(data)
-    return data.results;
+    return data;
   } catch (error) {
     console.error(error);
     return [];
@@ -43,6 +43,7 @@ const Search = (props: any) => {
 
   useEffect(() => {
     fetchData().then((data) => setPets(data));
+    console.log("pet",pets);
   }, []);
 
   function getBreeds(animal: string) {
