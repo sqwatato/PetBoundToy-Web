@@ -37,7 +37,7 @@ const About = () => {
           </dl>
         </div>
         <div className="hidden lg:flex lg:justify-center lg:col-span-5 text-black w-[50%] mx-auto">
-          <Image src="/images/team.png" alt="About Us Image" />
+          <Image src="/images/team.png" alt="About Us Image" width={500} height={500} />
         </div>
       </div>
     </section>
