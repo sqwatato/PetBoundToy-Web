@@ -79,10 +79,6 @@ export default function Form({ shelters }: { shelters: ShelterProp[] }) {
     })
   };
 
-  useEffect(() => {
-    console.log(shelters);
-  }, []);
-
   return (
 <div className="bg-white p-4 md:p-8 rounded-md shadow-md w-full max-w-screen-xl mx-auto flex flex-wrap justify-between">
 <h1 className="w-full text-xl md:text-2xl xl:text-3xl font-extrabold text-black leading-none tracking-tight text-center mb-4">
